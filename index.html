@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+    <link rel="canonical" href="https://zapiabr.com.br" />
+    <meta property="og:url" content="https://zapiabr.com.br" />
 </head>
 <body>
     <header>
@@ -36,7 +38,11 @@
                     <a href="https://wa.me/5519993058462" target="_blank" class="primary-button">Experimente Grátis</a>
                 </div>
                 <div class="hero-image" data-aos="fade-left">
-                    <img src="./assets/zapiaRobo.jpeg" alt="Zapia - Assistente Virtual" class="zapia-robot">
+                    <video class="zapia-video" autoplay loop muted playsinline>
+                        <source src="./assets/zapiaVideo.mp4" type="video/mp4">
+                        <!-- Fallback para navegadores que não suportam vídeo -->
+                        <img src="./assets/zapiaRobo.jpeg" alt="Zapia - Assistente Virtual" class="zapia-robot">
+                    </video>
                 </div>
             </div>
         </section>
