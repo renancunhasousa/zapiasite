@@ -46,11 +46,57 @@ body {
     transition: color 0.3s ease;
 }
 
-.cta-button {
+.cta-button, .primary-button {
     background: var(--primary-color);
     color: var(--text-color) !important;
-    padding: 0.5rem 1rem;
+    padding: 0.8rem 1.5rem;
     border-radius: 0.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(242, 160, 7, 0.3);
+}
+
+.cta-button:hover, .primary-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(242, 160, 7, 0.5);
+    background: var(--secondary-color);
+}
+
+.cta-button:active, .primary-button:active {
+    transform: translateY(1px);
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(242, 160, 7, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(242, 160, 7, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(242, 160, 7, 0);
+    }
+}
+
+.price-card .primary-button {
+    animation: pulse 2s infinite;
+}
+
+.secondary-button {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.secondary-button:hover {
+    background: var(--primary-color);
+    color: var(--text-color);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(242, 160, 7, 0.3);
 }
 
 .hero {
@@ -124,28 +170,6 @@ body {
     }
 }
 
-.primary-button {
-    background: var(--primary-color);
-    color: var(--text-color);
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: 0.5rem;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.secondary-button {
-    background: transparent;
-    border: 2px solid var(--primary-color);
-    color: var(--primary-color);
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
 .features {
     padding: 5rem 5%;
     background: var(--gray-light);
@@ -166,21 +190,35 @@ body {
     border-radius: 1rem;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .feature-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px) scale(1.02);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    border-color: var(--primary-color);
 }
 
 .feature-card i {
     font-size: 2.5rem;
     color: var(--primary-color);
     margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover i {
+    transform: scale(1.2);
 }
 
 .feature-card h3 {
     color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+.feature-card:hover h3 {
+    color: var(--secondary-color);
 }
 
 .feature-card p {

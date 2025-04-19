@@ -33,41 +33,142 @@
             <h1>Blog Zapia</h1>
             
             <div class="blog-grid">
-                <article class="blog-card">
+                <article class="blog-card" data-aos="fade-up">
                     <img src="assets/blog/ia-whatsapp.jpg" alt="IA no WhatsApp">
                     <div class="blog-content">
                         <span class="blog-date">15 Mar 2024</span>
                         <h3>Como a IA está revolucionando a comunicação no WhatsApp</h3>
                         <p>Descubra como a inteligência artificial está transformando a maneira como interagimos no WhatsApp...</p>
-                        <a href="blog/ia-whatsapp.html" class="read-more">Ler mais</a>
+                        <button onclick="openPost(0)" class="read-more">Ler mais</button>
                     </div>
                 </article>
 
-                <article class="blog-card">
+                <article class="blog-card" data-aos="fade-up">
                     <img src="assets/blog/stickers.jpg" alt="Criação de Stickers">
                     <div class="blog-content">
                         <span class="blog-date">10 Mar 2024</span>
                         <h3>10 dicas para criar stickers perfeitos</h3>
                         <p>Aprenda a criar figurinhas incríveis para WhatsApp com estas dicas práticas...</p>
-                        <a href="blog/stickers-dicas.html" class="read-more">Ler mais</a>
+                        <button onclick="openPost(1)" class="read-more">Ler mais</button>
                     </div>
                 </article>
 
-                <article class="blog-card">
+                <article class="blog-card" data-aos="fade-up">
                     <img src="assets/blog/ia-imagens.jpg" alt="Geração de Imagens">
                     <div class="blog-content">
                         <span class="blog-date">5 Mar 2024</span>
                         <h3>O poder da geração de imagens por IA</h3>
                         <p>Explore as possibilidades criativas da geração de imagens com inteligência artificial...</p>
-                        <a href="blog/geracao-imagens.html" class="read-more">Ler mais</a>
+                        <button onclick="openPost(2)" class="read-more">Ler mais</button>
                     </div>
                 </article>
             </div>
         </section>
     </main>
 
+    <!-- Modal para posts -->
+    <div id="postModal" class="post-modal">
+        <button class="nav-arrow prev" onclick="prevPost()">❮</button>
+        <div class="modal-content">
+            <span class="close-modal" onclick="closePost()">&times;</span>
+            <div id="postContent"></div>
+        </div>
+        <button class="nav-arrow next" onclick="nextPost()">❯</button>
+    </div>
+
     <footer>
-        <!-- Mesmo footer do index.html -->
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="./assets/logo.png" alt="Zapia Logo" class="logo-image">
+            </div>
+            <div class="footer-links">
+                <h4>Links Úteis</h4>
+                <ul>
+                    <li><a href="https://billing.stripe.com/p/login/14k3eM6hwf7Q2WY144">Gerenciar Assinatura</a></li>
+                    <li><a href="https://billing.stripe.com/p/login/14k3eM6hwf7Q2WY144">Assinar VIP</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="privacidade.html">Termos e Privacidade</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Redes Sociais</h4>
+                <div class="social-icons">
+                    <a href="https://wa.me/5519993058462" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/zapia.bot" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@zap.ia" target="_blank"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
     </footer>
+
+    <script>
+    const posts = [
+        {
+            title: "Como a IA está revolucionando a comunicação no WhatsApp",
+            date: "15 Mar 2024",
+            content: `
+                <h1>Como a IA está revolucionando a comunicação no WhatsApp</h1>
+                <img src="assets/blog/ia-whatsapp.jpg" alt="IA no WhatsApp">
+                <p>Conteúdo completo do post sobre IA no WhatsApp...</p>
+            `
+        },
+        {
+            title: "10 dicas para criar stickers perfeitos",
+            date: "10 Mar 2024",
+            content: `
+                <h1>10 dicas para criar stickers perfeitos</h1>
+                <img src="assets/blog/stickers.jpg" alt="Criação de Stickers">
+                <p>Conteúdo completo do post sobre criação de stickers...</p>
+            `
+        },
+        {
+            title: "O poder da geração de imagens por IA",
+            date: "5 Mar 2024",
+            content: `
+                <h1>O poder da geração de imagens por IA</h1>
+                <img src="assets/blog/ia-imagens.jpg" alt="Geração de Imagens">
+                <p>Conteúdo completo do post sobre geração de imagens...</p>
+            `
+        }
+    ];
+
+    let currentPost = 0;
+
+    function openPost(index) {
+        currentPost = index;
+        const modal = document.getElementById('postModal');
+        const content = document.getElementById('postContent');
+        content.innerHTML = posts[index].content;
+        modal.style.display = 'block';
+        setTimeout(() => {
+            modal.querySelector('.modal-content').classList.add('active');
+        }, 10);
+    }
+
+    function closePost() {
+        const modal = document.getElementById('postModal');
+        modal.querySelector('.modal-content').classList.remove('active');
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 300);
+    }
+
+    function nextPost() {
+        currentPost = (currentPost + 1) % posts.length;
+        document.getElementById('postContent').innerHTML = posts[currentPost].content;
+    }
+
+    function prevPost() {
+        currentPost = (currentPost - 1 + posts.length) % posts.length;
+        document.getElementById('postContent').innerHTML = posts[currentPost].content;
+    }
+
+    // Fechar modal ao clicar fora
+    document.getElementById('postModal').addEventListener('click', function(e) {
+        if (e.target === this) closePost();
+    });
+    </script>
 </body>
 </html> 
