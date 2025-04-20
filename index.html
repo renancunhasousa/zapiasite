@@ -97,9 +97,8 @@
                         <li>Respostas em texto (1 crédito)</li>
                         <li>Respostas em áudio (3 créditos)</li>
                         <li>Geração de imagens (5 créditos)</li>
+                        <li>Criação de figurinhas (1 crédito)</li>
                         <li>Busca na web integrada</li>
-                        <li>Criação de figurinhas ilimitada</li>
-                        <li>Comandos especiais (.menu, .config)</li>
                         <li>Reset diário à meia-noite</li>
                     </ul>
                     <a href="https://wa.me/5519993058462" target="_blank" class="secondary-button">Começar Grátis</a>
@@ -110,6 +109,10 @@
                     <div class="credits-info">
                         <p>Uso Ilimitado</p>
                         <small>Sem restrições</small>
+                    </div>
+                    <div class="promo-tag">
+                        <span>🔥 Preço Promocional de Lançamento 🔥</span>
+                        <small>Por tempo limitado!</small>
                     </div>
                     <ul>
                         <li>Respostas em texto ilimitadas</li>
@@ -163,5 +166,36 @@
             mirror: true
         });
     </script>
+
+    <!-- Botão de assistente flutuante -->
+    <div class="floating-assistant" id="floatingAssistant">
+        <img src="./assets/roboZap.png" alt="Assistente Virtual" class="assistant-icon">
+        <div class="assistant-tooltip">Precisa de ajuda? Converse comigo!</div>
+    </div>
+
+    <!-- Chat overlay -->
+    <div class="chat-overlay" id="chatOverlay">
+        <div class="chat-header">
+            <img src="./assets/roboZap.png" alt="Zapia" class="chat-avatar">
+            <div class="chat-title">
+                <h3>Assistente Zapia</h3>
+                <p>Online</p>
+            </div>
+            <button class="close-chat" id="closeChat">&times;</button>
+        </div>
+        <div class="chat-messages">
+            <div class="message bot">
+                Olá! 👋 Sou o assistente virtual da Zapia. Como posso ajudar você hoje?
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" placeholder="Digite sua mensagem..." id="chatInput">
+            <button id="sendMessage">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="chat.js"></script>
 </body>
 </html> 

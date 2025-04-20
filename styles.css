@@ -237,6 +237,7 @@ body {
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
+    align-items: stretch;
 }
 
 .credits-info {
@@ -244,6 +245,7 @@ body {
     padding: 1rem;
     border-radius: 0.5rem;
     margin: 1rem 0;
+    flex-grow: 0;
 }
 
 .credits-info p {
@@ -267,7 +269,8 @@ body {
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
+    height: 100%;
 }
 
 .price-card ul {
@@ -275,6 +278,8 @@ body {
     padding: 1.5rem 0;
     text-align: left;
     margin-left: 1rem;
+    flex-grow: 1;
+    margin-bottom: auto;
 }
 
 .price-card ul li {
@@ -295,6 +300,11 @@ body {
 
 .price-card h3 {
     color: var(--primary-color);
+}
+
+.price-card .primary-button,
+.price-card .secondary-button {
+    margin-top: auto;
 }
 
 footer {
@@ -403,4 +413,207 @@ footer {
     .price-card.featured {
         transform: none;
     }
+}
+
+.promo-tag {
+    background: rgba(242, 160, 7, 0.2);
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin: 1rem 0;
+    text-align: center;
+    animation: pulse 2s infinite;
+}
+
+.promo-tag span {
+    color: var(--primary-color);
+    font-weight: 600;
+    display: block;
+}
+
+.promo-tag small {
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Assistente flutuante */
+.floating-assistant {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: glow 2s infinite;
+}
+
+@keyframes glow {
+    0% {
+        filter: drop-shadow(0 0 5px rgba(242, 160, 7, 0.6));
+    }
+    50% {
+        filter: drop-shadow(0 0 15px rgba(242, 160, 7, 0.8));
+    }
+    100% {
+        filter: drop-shadow(0 0 5px rgba(242, 160, 7, 0.6));
+    }
+}
+
+.assistant-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.floating-assistant:hover .assistant-icon {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 20px rgba(242, 160, 7, 0.9));
+}
+
+.assistant-tooltip {
+    position: absolute;
+    right: 85px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    color: var(--background-color);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    white-space: nowrap;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.floating-assistant:hover .assistant-tooltip {
+    opacity: 1;
+}
+
+/* Chat overlay */
+.chat-overlay {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    width: 350px;
+    height: 500px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+    display: none;
+    flex-direction: column;
+    z-index: 998;
+}
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background: var(--background-color);
+    border-radius: 15px 15px 0 0;
+    color: white;
+}
+
+.chat-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.chat-title {
+    flex: 1;
+}
+
+.chat-title h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.chat-title p {
+    margin: 0;
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.close-chat {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background: #f5f5f5;
+}
+
+.message {
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border-radius: 15px;
+    max-width: 80%;
+}
+
+.message.bot {
+    background: var(--background-color);
+    color: white;
+    border-radius: 15px 15px 15px 0;
+}
+
+.message.user {
+    background: var(--primary-color);
+    color: white;
+    margin-left: auto;
+    border-radius: 15px 15px 0 15px;
+}
+
+.chat-input {
+    display: flex;
+    padding: 15px;
+    background: white;
+    border-top: 1px solid #eee;
+    border-radius: 0 0 15px 15px;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+.chat-input button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.chat-input button:hover {
+    background: var(--secondary-color);
+    transform: scale(1.1);
 } 
